@@ -1,0 +1,96 @@
+[
+    {
+      "id": 1,
+      "name": "Daniel",
+      "cedula": "1252232522",
+      "absences": [
+        {
+          "id": 0,
+          "type": " 4",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-01"
+        }
+        
+      ],
+      "materiaId": "1",
+      "trabajoCotidiano": [
+        {
+          "id": 0,
+          "type": "3",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-01"
+        },
+        {
+          "id": 1,
+          "type": "3",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-02"
+        },
+        {
+          "id": 2,
+          "type": "2",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-03"
+        },
+        {
+          "id": 3,
+          "type": "2",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-02-04"
+        }
+      ],
+      "groupId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Carlos",
+      "cedula": "57293839",
+      "absences": [
+        {
+          "id": 0,
+          "type": " 3",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-01"
+        }
+        
+      ],
+      "materiaId": "1",
+      "trabajoCotidiano": [
+        {
+          "id": 0,
+          "type": "2",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-01"
+        },
+        {
+          "id": 1,
+          "type": "4",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-02"
+        },
+        {
+          "id": 2,
+          "type": "2",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-01-03"
+        },
+        {
+          "id": 3,
+          "type": "4",
+          "materiaId": "1",
+          "grupoId": "1",
+          "date": "2025-02-04"
+        }
+      ],
+      "groupId": "1"
+    }
+  ]

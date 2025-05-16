@@ -1,0 +1,22 @@
+
+El objeto JSON tiene dos arrays. Analicemos su estructura:
+[
+  {
+    "id": 1,
+    "name": "asd",
+    "cedula": "asd",
+    "groupId": "1",
+    "materiaId": "1",
+    "absences": [],
+    "trabajoCotidiano": [
+      {
+        "id": 59,
+        "date": "2025-03-29",
+        "type": "0",
+        "materiaId": 1,
+        "grupoId": 1,
+        "detail": "12"
+      }
+    ]
+  }
+]

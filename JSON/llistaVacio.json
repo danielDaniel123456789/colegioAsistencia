@@ -1,0 +1,20 @@
+[
+    {
+      "id": 1,
+      "name": "Daniel",
+      "cedula": "1252232522",
+      "absences": [         ],
+      "materiaId": "1",
+      "trabajoCotidiano": [   ],
+      "groupId": "1"
+    },
+    {
+      "id": 2,
+      "name": "Carlos",
+      "cedula": "57293839",
+      "absences": [  ],
+      "materiaId": "1",
+      "trabajoCotidiano": [  ],
+      "groupId": "1"
+    }
+  ]

@@ -1,0 +1,18 @@
+
+ rama main -->le cae a la rama -->tester01
+la rama tester01 con los cambios de la rama main
+**************************************************************
+# Asegúrate de estar en la rama tester01
+git checkout tester01 
+**************************************************************
+# Trae los últimos cambios de la rama main
+git fetch origin
+**************************************************************
+# Fusiona la rama main en tester01
+git merge origin/main
+**************************************************************
+Si hay conflictos, Git te lo indicará y deberás resolverlos manualmente antes de continuar con:
+git push origin tester01
+**************************************************************
+Luego, sube los cambios a GitHub:
+git push origin tester01

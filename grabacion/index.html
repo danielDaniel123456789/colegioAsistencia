@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grabar y Guardar en localStorage</title>
+</head>
+<body>
+    <button id="startBtn">Grabar</button>
+    <button id="stopBtn" disabled>Detener</button>
+    <button id="playBtn" disabled>Reproducir</button>
+    <audio id="audio" controls ></audio>
+    
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        
+        document.getElementById('startBtn').addEventListener('click', async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+            
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
+            
+            mediaRecorder.onstop = () => {
+                const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                const reader = new FileReader();
+                reader.readAsDataURL(audioBlob);
+                reader.onloadend = () => {
+                    localStorage.setItem('audioRecording', reader.result);
+                    document.getElementById('playBtn').disabled = false;
+                };
+            };
+            
+            mediaRecorder.start();
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('stopBtn').disabled = false;
+        });
+        
+        document.getElementById('stopBtn').addEventListener('click', () => {
+            mediaRecorder.stop();
+            document.getElementById('startBtn').disabled = false;
+            document.getElementById('stopBtn').disabled = true;
+        });
+        
+        document.getElementById('playBtn').addEventListener('click', () => {
+            const audioData = localStorage.getItem('audioRecording');
+            if (audioData) {
+                document.getElementById('audio').src = audioData;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostrar Imágenes</title>
+    <style>
+        /* Estilo general para centrar el contenido */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        /* Ocultar todas las imágenes por defecto */
+        .imagen {
+            display: none;
+            width: 100%;
+            max-width: 500px; /* Limita el tamaño máximo de las imágenes */
+            margin-top: 20px;
+        }
+
+        /* Estilo del botón */
+        .btn-mostrar, .btn-siguiente {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Efecto hover para los botones */
+        .btn-mostrar:hover, .btn-siguiente:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Botón para mostrar la primera imagen -->
+    <button class="btn-mostrar" onclick="mostrarImagen()">Mostrar Primera Imagen</button>
+
+    <!-- Botón para mostrar la siguiente imagen -->
+    <button class="btn-siguiente" onclick="siguienteImagen()" style="display:none;">Siguiente Imagen</button>
+
+    <!-- Las imágenes ocultas que se mostrarán una por una -->
+    <img id="imagen1" class="imagen" src="foto1.png" alt="Imagen 1">
+    <img id="imagen2" class="imagen" src="foto2.png" alt="Imagen 2">
+    <img id="imagen3" class="imagen" src="foto3.png" alt="Imagen 3">
+    <img id="imagen4" class="imagen" src="foto4.png" alt="Imagen 4">
+    <img id="imagen5" class="imagen" src="foto5.png" alt="Imagen 5">
+</div>
+
+<script>
+    // Índice de la imagen actual que se está mostrando
+    let imagenIndex = 0;
+
+    // Función para mostrar la primera imagen
+    function mostrarImagen() {
+        // Muestra la primera imagen
+        const imagenes = document.querySelectorAll('.imagen');
+        imagenes[imagenIndex].style.display = 'block';
+
+        // Cambia el botón de "Mostrar Primera Imagen" a "Siguiente Imagen"
+        document.querySelector('.btn-mostrar').style.display = 'none';
+        document.querySelector('.btn-siguiente').style.display = 'inline-block';
+    }
+
+    // Función para mostrar la siguiente imagen
+    function siguienteImagen() {
+        // Obtiene todas las imágenes
+        const imagenes = document.querySelectorAll('.imagen');
+
+        // Oculta la imagen actual antes de mostrar la siguiente
+        imagenes[imagenIndex].style.display = 'none';
+
+        // Si hay más imágenes para mostrar
+        if (imagenIndex < imagenes.length - 1) {
+            imagenIndex++;  // Incrementa el índice
+            imagenes[imagenIndex].style.display = 'block';  // Muestra la siguiente imagen
+        } else {
+            // Cuando ya no hay más imágenes, reinicia el índice y muestra la primera imagen nuevamente
+            imagenIndex = 0;
+            imagenes[imagenIndex].style.display = 'block';  // Muestra la primera imagen
+            document.querySelector('.btn-siguiente').style.display = 'inline-block'; // Muestra el botón de siguiente
+        }
+    }
+</script>
+
+</body>
+</html>

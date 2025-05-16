@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Ausencias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="ausencia/addStudent.js"></script>
+    <script src="ausencia/saveStudent.js"></script>
+    <script src="localStore/loadStudents.js"></script>
+    <script src="ausencia/registerAbsence.js"></script>
+    <script src="ausencia/getCurrentDate.js"></script>
+    <script src="ausencia/filterStudents.js"></script>
+    <script src="ausencia/displayStudents.js"></script>
+    <script src="ausencia/viewAbsences.js"></script>
+    <script src="ausencia/editAbsence.js"></script>
+    <script src="ausencia/deleteAbsence.js"></script>
+    <script src="ausencia/copyStudentData.js"></script>
+    <script src="estudiante/editStudent.js"></script>
+    <script src="estudiante/buscadorLocalStore.js"></script>
+    <script src="ausencia/capitalizeFirstLetter.js"></script>
+    <script src="ausencia/copyStudentPadre.js"></script>
+
+    <script src="materias/addMateria.js"></script>
+    <script src="materias/misMaterias.js"></script>
+    <script src="registroUsuarios/usuarioRegistrado.js"></script>
+
+    <script src="ausencia/viewAbsencesRecargar.js"></script>
+    <script src="ausencia/usuarioRegistrado.js"></script>
+  
+    <script src="cotidiano/trabajoCotidiano.js"></script>
+    <script src="cotidiano/abrirInformeCotidiano.js"></script>
+    <script src="cotidiano/eliminarTrabajoCotidiano.js"></script>
+    <script src="cotidiano/resumeCotidiano.js"></script>
+
+    <script src="cotidiano/deleteTrabajoCotidiano.js"></script>
+    <script src="cotidiano/editTrabajoCotidiano.js"></script>
+    <script src="importarEstudiantes/importarEstudiantes.js"></script>
+    <script src="importarEstudiantes/eliminarTodoslosEstudiantes.js"></script>
+    <script src="grupo/grupo.js"></script>
+    <script src="grupo/misGrupos.js"></script>
+    <script src="grupo/editarGrupo.js"></script>
+     <script src="ausencia/opciones.js"></script>
+     <script src="formato/capitalizeWords.js"></script>
+     <script src="formato/generateId.js"></script>
+     <script src="estudiante/deleteStudent.js"></script>
+     <script src="cotidiano/informeTrabajoCotidiano.js"></script>
+     <script src="tareas/resumenTares.js"></script>
+     <script src="tareas/registrarTareas.js"></script>
+     <script src="tareas/informeGeneralTareas.js"></script>
+     <script src="tareas/viewTasks.js"></script>
+     <script src="tareas/editarTarea.js"></script>
+     <script src="tareas/eliminarTarea.js"></script>
+     <script src="pruebas/registrarPrueba.js"></script>
+     <script src="pruebas/viewPruebas.js"></script>
+     <script src="pruebas/informeGeneralPruebas.js"></script>
+     <script src="pruebas/editarPrueba.js"></script>
+     <script src="pruebas/editarPruebaEstudiante.js"></script>
+     <script src="ausencia/informeMesAsistencia.js"></script>
+     <script src="cotidiano/editarTrabajoCotidiano.js"></script>
+     <script src="importarEstudiantes/datosGeneralesEspecificos.js"></script>
+     <script src="localStore/localStore.js"></script>
+     <script src="localStore/opcionesRegistrar.js"></script>
+     <script src="localStore/informesPresentar.js"></script>
+     <script src="localStore/getRandomColor.js"></script>
+     <script src="registroUsuarios/mostrarModalCaducot.js"></script>
+     <script src="registroUsuarios/usuarioRegistrado.js"></script>
+     <script src="registroUsuarios/generarRegistroUsuario.js"></script>
+     <script src="registroUsuarios/fechaRegistroCrear.js"></script>
+     <script src="registroUsuarios/clavesRegistro.js"></script>
+     <script src="tareas/editarTareaEstudiante.js"></script>
+     <script src="tareas/eliminarTareaEstudiante.js"></script>
+     <script src="cotidiano/resumeCotidianoMes.js"></script>
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="CSS/style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    
+    <div id="listaEstudiantes">
+        <div class="container text-center">
+            <h3 class="my-4 text-white">Control de Ausencias</h3>
+
+        
+<div hidden>
+    <input type="text" id="nombreLocalStore" placeholder="Nombre de LocalStorage">
+    <input type="number" id="id" placeholder="ID">
+    <button onclick="cargarDatos()">Buscar</button>
+</div>
+          
+            <div id="studentList" class="row"></div>
+        </div>
+        <div id="materiaList" class="row"></div> <!-- Contenedor donde se cargan las materias -->
+    
+    </div>
+ 
+
+    <div class="footer animate__animated animate__backInDown text-center p-4">
+       
+        <div class="btn-group p-2" role="group">
+          <button class="btn btn-warning btn-lg" onclick="opciones()">Insertar</button>
+          <input type="text" id="buscarEstudiante" class="form-control form-control-lg btn btn-warning" placeholder="Buscar" oninput="filterStudents()">
+          <button class="btn btn-warning" onclick="informesPresentar()"><i class="fa fa-bell" aria-hidden="true"></i> Informes</button>
+        </div>
+      </div>
+      
+
+    <script>
+        // Cargar estudiantes y materias desde localStorage
+        window.onload = function() {
+    loadStudents();
+    
+   usuarioRegistrado();
+ //mostrarModalCaducot();  // Comprobar si el usuario está registrado e imprimir la fecha de registro
+};
+    </script>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

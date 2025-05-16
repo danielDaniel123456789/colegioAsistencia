@@ -1,0 +1,6 @@
+[{"id":1,"name":"Asd","cedula":"asd","
+
+"trabajoCotidiano":[{"id":0,"type":"3","materiaId":"1","grupoId":"1","date":"2025-01-01"},
+{"id":1,"type":"3","materiaId":"1","grupoId":"1","date":"2025-01-02"},
+{"id":2,"type":"3","materiaId":"1","grupoId":"1","date":"2025-01-03"},{"id":3,"type":"3","materiaId":"1","grupoId":"1","date":"2025-01-04"}
+
